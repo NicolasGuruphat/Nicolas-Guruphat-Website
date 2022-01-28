@@ -5,3 +5,9 @@ footer {
     z-index:1;
     width:100%;
  }
+.contact{
+    display: inline; 
+    padding: 2%;
+    border: 1px solid black;
+    background-color: grey;
+}
