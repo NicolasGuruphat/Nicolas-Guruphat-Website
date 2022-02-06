@@ -29,6 +29,7 @@ header{
 .other-card:hover, .repo-card:hover{
     color: #e8d6cb;
     background-color: #7c3030;
+    border: 1px solid #e8d6cb;
 }
 .other-card, .repo-card{
     
