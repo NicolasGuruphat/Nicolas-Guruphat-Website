@@ -77,7 +77,7 @@ body{
 p{ 
     margin-left: 4%;
     margin-right: 4%;
-    text-align: justify;
+    text-align: justify;  
 }
 #warning{
     text-align: center;
@@ -85,5 +85,7 @@ p{
 #bienvenue{
     margin-bottom: 15%;
     font-size: 20px;
-    font-weight: bold ;
+    font-weight: bold;
+    border: 2px dotted #965959;
+    padding : 3%
 }
