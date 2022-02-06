@@ -1,44 +1,44 @@
 window.addEventListener('DOMContentLoaded', async function () {
-    async function get(url) {
-        const resp = await fetch(url);
-        return resp.json();
+  async function get(url) {
+    const resp = await fetch(url);
+    return resp.json();
+  }
+
+  const emojis = await get('https://api.github.com/emojis');
+  const colors = await get('https://raw.githubusercontent.com/ozh/github-colors/master/colors.json');
+
+  const themes = {
+    'light-default': {
+      background: '#e8d6cb',
+      borderColor: '#e1e4e8',
+      color: '#7c3030',
+      linkColor: '#0366d6',
+    },
+    'dark-default': {
+      background: 'rgb(13, 17, 23)',
+      borderColor: 'rgb(48, 54, 61)',
+      color: 'rgb(139, 148, 158)',
+      linkColor: 'rgb(88, 166, 255)',
     }
+  };
 
-    const emojis = await get('https://api.github.com/emojis');
-    const colors = await get('https://raw.githubusercontent.com/ozh/github-colors/master/colors.json');
+  document.querySelectorAll('.repo-card').forEach(async function (el) {
+    const name = el.getAttribute('data-repo');
+    const theme = themes[el.getAttribute('data-theme') || 'light-default'];
+    const data = await get(`https://api.github.com/repos/${name}`);
 
-    const themes = {
-        'light-default': {
-            background: 'white',
-            borderColor: '#e1e4e8',
-            color: '#586069',
-            linkColor: '#0366d6',
-        },
-        'dark-default': {
-            background: 'rgb(13, 17, 23)',
-            borderColor: 'rgb(48, 54, 61)',
-            color: 'rgb(139, 148, 158)',
-            linkColor: 'rgb(88, 166, 255)',
-        }
-    };
+    data.description = (data.description || '').replace(/:\w+:/g, function (match) {
+      const name = match.substring(1, match.length - 1);
+      const emoji = emojis[name];
 
-    document.querySelectorAll('.repo-card').forEach(async function (el) {
-        const name = el.getAttribute('data-repo');
-        const theme = themes[el.getAttribute('data-theme') || 'light-default'];
-        const data = await get(`https://api.github.com/repos/${name}`);
+      if (emoji) {
+        return `<span><img src="${emoji}" style="width: 1rem; height: 1rem; vertical-align: -0.2rem;"></span>`;
+      }
 
-        data.description = (data.description || '').replace(/:\w+:/g, function (match) {
-            const name = match.substring(1, match.length - 1);
-            const emoji = emojis[name];
+      return match;
+    });
 
-            if (emoji) {
-                return `<span><img src="${emoji}" style="width: 1rem; height: 1rem; vertical-align: -0.2rem;"></span>`;
-            }
-
-            return match;
-        });
-
-        el.innerHTML = `
+    el.innerHTML = `
       <div style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji; border: 1px solid ${theme.borderColor}; border-radius: 6px; background: ${theme.background}; padding: 16px; font-size: 14px; line-height: 1.5; color: #24292e;">
         <div style="display: flex; align-items: center;">
           <svg style="fill: ${theme.color}; margin-right: 8px;" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
@@ -64,5 +64,5 @@ window.addEventListener('DOMContentLoaded', async function () {
         </div>
       </div>
       `;
-    });
+  });
 });
