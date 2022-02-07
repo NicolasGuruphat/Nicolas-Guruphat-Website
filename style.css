@@ -30,8 +30,8 @@
 }
 
 .other-card:hover, .repo-card:hover{
-    color: #e8d6cb;
-    background-color: #7c3030;
+    transform: scale(1.05);
+    transition: transform 330ms ease-in-out;
 }
 .description-competence{
     text-align: center;
@@ -90,13 +90,13 @@ p{
 }
 #bienvenue{
     margin-bottom: 15%;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: bold;
     border-radius: 25px;
     text-align: center;
     background: -webkit-linear-gradient(#894444 60%, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     padding : 3%
 }
 .competence{
@@ -106,6 +106,10 @@ p{
     border-radius: 15px;
     background-color: #894444;
     box-shadow: 10px 5px 15px #572727;
+}
+.competence:hover{
+    transform: scale(1.01);
+    transition: transform 430ms ease-in-out;
 }
 #credit{
     text-align: center;
