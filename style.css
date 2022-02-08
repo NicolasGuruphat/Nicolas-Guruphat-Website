@@ -124,7 +124,7 @@ p{
 }
 .competence:not(:hover){
     transform: scale(1.00);
-    box-shadow: 0px 0px 0px;
+    box-shadow: 0px 0px 0px #572727;
     transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
 }
 #credit{
