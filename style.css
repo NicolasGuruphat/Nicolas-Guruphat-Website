@@ -100,7 +100,7 @@ p{
     text-align: center;
 }
 #bienvenue{
-    margin-bottom: 15%;
+    margin-bottom: 7%;
     font-size: 19px;
     font-weight: bold;
     border-radius: 25px;
@@ -133,8 +133,9 @@ p{
 }
 #sommaire>a{
     text-decoration: none;
-    color:#e4d5d5;
+    color:#d3aaaa;
 }
 #sommaire{
     text-align: center;
+    color:#d3aaaa;
 }
