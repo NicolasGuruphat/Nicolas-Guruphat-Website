@@ -31,7 +31,15 @@
 
 .other-card:hover, .repo-card:hover{
     transform: scale(1.05);
-    transition: transform 330ms ease-in-out;
+    box-shadow: 10px 5px 15px #572727;
+    transition: transform  300ms ease-in-out, box-shadow 300ms ease-in-out;
+
+}
+.other-card:not(:hover), .repo-card:not(:hover){
+    transform: scale(1.00);
+    box-shadow: 0px 0px;
+    transition: transform  300ms ease-in-out, box-shadow 300ms ease-in-out;
+
 }
 .description-competence{
     text-align: center;
@@ -49,7 +57,7 @@
     margin-top: 1.5%;
     margin-bottom: 1.5%;
     margin-left:auto;
-    margin-right: auto;
+    margin-right: auto; 
 }
 .language-circle{
     width: 12px; height: 12px; border-radius: 100%; display: inline-block; top: 1px; position: relative;
@@ -70,7 +78,10 @@ h1{
     margin-bottom: 15%;
     margin-top: 4%;
     text-align: center;
-    color:#7c3030;
+    
+    background: -webkit-linear-gradient(#894444 50%, #9e6969);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 body{
     background: rgb(232,214,203);
@@ -100,18 +111,30 @@ p{
     padding : 3%
 }
 .competence{
-    border:2px solid #572727;
     margin:2%;
     margin-top: 5%;
     border-radius: 15px;
     background-color: #894444;
-    box-shadow: 10px 5px 15px #572727;
+    padding:1%;
 }
 .competence:hover{
     transform: scale(1.01);
-    transition: transform 430ms ease-in-out;
+    box-shadow: 10px 5px 15px #572727;
+    transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
+}
+.competence:not(:hover){
+    transform: scale(1.00);
+    box-shadow: 0px 0px 0px;
+    transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
 }
 #credit{
     text-align: center;
     font-size: 20px;
+}
+#sommaire>a{
+    text-decoration: none;
+    color:#e4d5d5;
+}
+#sommaire{
+    text-align: center;
 }
